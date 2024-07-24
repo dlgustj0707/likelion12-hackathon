@@ -66,6 +66,17 @@ a {
     margin-bottom: 20px; /* input 창들 사이에 간격 추가 */
 }
 
+.loginContainer > button {
+    width: 585px;
+    height: 69px;
+    border-radius: 44px;
+    color: white;
+    background-color: #000000;
+    border: 1px solid #000000;
+    font-size: 20px;
+    margin-top: 37px;
+}
+
 input::placeholder {
     color: #999999;
     font-weight: 200;

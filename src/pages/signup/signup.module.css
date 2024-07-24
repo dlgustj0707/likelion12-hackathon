@@ -1,21 +1,33 @@
+/* signup.module.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .logo {
-    position: relative;
+    position: absolute;
     top: 42px;
     left: 54px;
 }
 
 .container {
+    display: grid;
+    place-items: center;
+    height: 100vh; /* 화면 전체 높이 사용 */
+}
+
+.container > div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.container > p {
+.container > div > p {
     font-size: 48px;
     font-weight: 800;
     margin-bottom: 40px;
-    text-align: left; /* 텍스트를 왼쪽으로 정렬 */
+    text-align: left;
     width: 635px; /* input 창과 동일한 너비로 설정 */
 }
 
@@ -27,18 +39,28 @@
     margin-bottom: 23px;
 }
 
+.signupFormContainer > button {
+    width: 635px;
+    height: 69px;
+    border-radius: 44px;
+    color: white;
+    background-color: #000000;
+    border: 1px solid #000000;
+    font-size: 20px;
+    margin-top: 37px;
+}
+
 input::placeholder {
     color: #999999;
     font-weight: 200;
 }
-
 
 .signupFormContainer > div > input {
     width: 100%;
     border-radius: 57px;
     border: 1px solid #000;
     font-size: 20px;
-    padding-left: 50px; /* 글씨 입력 시 50px 떨어지도록 설정 */
+    padding-left: 50px;
 }
 
 .signupFormContainer > div > button {
@@ -54,4 +76,3 @@ input::placeholder {
     background-color: #666666;
     border: 1px solid #666666;
 }
-

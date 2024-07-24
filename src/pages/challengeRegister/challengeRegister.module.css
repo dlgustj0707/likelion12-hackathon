@@ -1,0 +1,74 @@
+.subtitle {
+    height: 211px;
+    background-color: black;
+}
+.subtitle > p {
+    width: 1162px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 auto;
+    padding-top: 77px;
+}
+
+.contentContainer {
+    width: 1162px;
+    height: 560px;
+    font-size: 20px;
+    margin: 68px auto;
+}
+
+.contentContainer > div {
+    margin-bottom: 29px;
+}
+
+.contentContainer > div > input, select {
+    height: 50px;
+    background-color: #EEECEC;
+    border: 1px solid #EEECEC;
+    color: #666666;
+    padding: 10px;
+}
+
+.contentContainer label {
+    margin-right: 180px;
+}
+
+.certification label {
+    margin-right: 200px;
+}
+
+.classification > select, .period > input, .certification > select{
+    width: 184px;
+}
+
+.title > input, .intro > input, .method > input{
+    width: 890px;
+}
+
+.period input {
+    margin-right: 10px;
+}
+
+.period input:last-child {
+    margin-left: 10px;
+}
+
+.contentContainer > button {
+    width: 164px;
+    height: 52px;
+    background-color: black;
+    border-radius: 35px;
+    color: white;
+    font-size: 20px;
+    margin-left: 1000px;
+}
+
+.contentContainer > button span {
+    margin-right: 10px;
+}
+
+.contentContainer > button svg {
+    margin-left: 10px; 
+    transform: translateY(2px);
+}

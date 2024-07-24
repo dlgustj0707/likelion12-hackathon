@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './login.module.css';
-import logo from '../../img/logo.png';
+import logo from '../../assets/logo.png';
 
 function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     return (
         <>
@@ -11,10 +13,11 @@ function Login() {
             <div className={styles.loginContainer}>
                 <p className={styles.title}>로그인</p>
                 <div className={styles.loginFormContainer}>
-                    <input type="email" placeholder='Email (본인의 학교 이메일을 입력해 주세요.)'/><br />
-                    <input type="password" placeholder='Password'/>
+                    <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder='Email (본인의 학교 이메일을 입력해 주세요.)'/><br />
+                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder='Password'/>
                 </div>
                 <p className={styles.signupLink}>계정이 없다면? <a href="">회원가입</a></p>
+                <button>로그인</button>
             </div>
 
             <div className={styles.describeContainer}>

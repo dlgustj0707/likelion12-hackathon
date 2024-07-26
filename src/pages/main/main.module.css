@@ -1,0 +1,198 @@
+/*welcomeMessage*/
+.welcomeMessageContainer {
+    width: 100%;
+    padding-top: 77px;
+    padding-bottom: 258px;
+    background-color: black;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.welcomeMessageTitle{
+    width: 80%;
+    font-size: 40px;
+    
+
+}
+.welcomeMessageDetail{
+    width: 80%;
+    font-size: 20px;
+}
+
+
+/*challengeInfo (+shared)*/
+
+.challengeInfoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-150px);
+    gap: 68px;
+}
+.challengeInfoContainer h1{
+    font-size: 40px;
+}
+
+/*challengeOverView*/
+.challengeOverViewFlex{
+    display: flex;
+    gap: 39px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.overViewItem{
+    height: 328px;
+    min-width: 384px;
+    background-color: #666666;
+    border-radius: 44px;
+    box-sizing: border-box;
+    padding: 31px 38px;
+    color: white;
+    position: relative;
+}
+.overViewItem h3{
+    font-size: 24px;
+}
+.overViewItem p{
+    font-size: 20px;
+    font-weight:500;
+    padding: 0 8px;
+}
+.overViewItem .divider{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 18px;
+}
+.overViewItem .goNowButton{
+    background-color: white;
+    border-radius: 29.5px;
+    width: 148px;
+    height: 38px;
+    color: black;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 41px;
+    right: 42px;
+}
+.overViewItem .schoolRankingFlex{
+    display: flex;
+    flex-direction: row;
+    gap: 21px;
+    justify-content: center;
+    align-items: center;
+}
+.overViewItem .schoolRankingFlex .schoolItem{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+.overViewItem .schoolRankingFlex .schoolItem .schoolLogo{
+    width: 86px;
+    height: 86px;
+    background-color: white;
+    border-radius: 50%;
+}
+.overViewItem .ingiChangedChallengeFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;   
+    justify-content: center;
+    align-items: center;
+}
+.overViewItem .ingiChangedChallengeFlex .ChallengeItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 283px;
+    background-color: white;
+    border-radius: 21.5px;
+    color: black;
+    font-size: 16px;
+    padding: 12px 14px;
+}
+
+/*inSchoolChallenge*/
+.inSchoolChallengeFlex{
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+}
+.inSchoolChallengeFlex .challengeColumnFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    width: 100%;
+}
+.inSchoolChallengeFlex .challengeColumnFlex .challengeRowFlex{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+}
+.inSchoolChallengeFlex .challengeColumnFlex .challengeRowFlex .challengeItem{
+    flex: 1;
+    border: 1px solid black;
+    text-align: center;
+    padding: 48px 62px;
+    border-radius: 47px;
+}
+
+/*myChallenge*/
+.myChallengeFlex{
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+}
+.myChallengeFlex h3{
+    font-size: 40px;
+}
+.myChallengeFlex .inSchool{
+    flex:1;
+    background-color: #3A3A3A;
+    color: white;
+    text-align: center;
+    padding: 32px 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+}
+.myChallengeFlex .entireSchool{
+    flex:1;
+    background-color: #848383;
+    color: white;
+    text-align: center;
+    padding: 32px 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+}
+.myChallengeFlex .challengeColumnFlex{
+    background-color: white;
+    padding: 58px 80px;
+    border-radius: 68px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    font-size: 32px;
+    width: 100%;
+    text-align: left;
+}

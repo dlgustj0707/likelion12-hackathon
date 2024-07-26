@@ -1,8 +1,8 @@
 import React from 'react'
-import NavBar from '../../component/navBar/navBar';
+import NavBar from '../../component/navBar';
 import styles from './challengeRegister.module.css';
 
-function ChellengeRsgister() {
+function ChallengeRegister() {
     return (
     <>
     <NavBar></NavBar>
@@ -56,4 +56,4 @@ function ChellengeRsgister() {
     )
 }
 
-export default ChellengeRsgister;
+export default ChallengeRegister;

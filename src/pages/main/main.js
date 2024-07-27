@@ -1,6 +1,5 @@
 import React, { Text } from 'react';
-import NavBar from '../../component/navBar';
-
+import NavBar from '../../component/navBar/navBar';
 import styles from './main.module.css';
 import ImgItem from './imgItem';
 

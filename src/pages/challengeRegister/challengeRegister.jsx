@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../../component/navBar';
+import NavBar from '../../component/navBar/navBar';
 import styles from './challengeRegister.module.css';
 
 function ChallengeRegister() {

@@ -1,10 +1,12 @@
 .container {
-    width: 522px;
-    height: 171px;
+    width: 500px;
+    height: 170px;
     box-shadow: 5px 5px 10px;
     border-radius: 62.5px;
     padding-left: 61px;
     padding-top: 38px;
+    margin: 26px;
+    
 }
 
 .container > div {

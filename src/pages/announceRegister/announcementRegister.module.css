@@ -1,0 +1,79 @@
+.container {
+    margin-top: 151px;
+}
+
+.subtitle {
+    width: 1162px;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0 auto;
+    padding-top: 77px;
+}
+
+.contentContainer {
+    width: 1162px;
+    height: 560px;
+    font-size: 20px;
+    margin: 68px auto;
+}
+
+.contentContainer > div {
+    margin-bottom: 29px;
+}
+
+.title > input, .read > select {
+    height: 50px;
+    background-color: #EEECEC;
+    border: 1px solid #EEECEC;
+    color: #666666;
+    padding: 10px;
+}
+
+
+
+.contentContainer label {
+    margin-right: 180px;
+}
+
+.content > textarea {
+    height: 400px;
+    background-color: #EEECEC;
+    border: 1px solid #EEECEC;
+    color: #666666;
+    padding: 10px;
+    resize: none;
+}
+.content label {
+    vertical-align: top;
+}
+
+.read label {
+    margin-right: 140px;
+}
+
+.read > select{
+    width: 184px;
+}
+
+.title > input, .content > textarea {
+    width: 890px;
+}
+
+.contentContainer > button {
+    width: 164px;
+    height: 52px;
+    background-color: black;
+    border-radius: 35px;
+    color: white;
+    font-size: 20px;
+    margin-left: 1000px;
+}
+
+.contentContainer > button span {
+    margin-right: 10px;
+}
+
+.contentContainer > button svg {
+    margin-left: 10px; 
+    transform: translateY(2px);
+}

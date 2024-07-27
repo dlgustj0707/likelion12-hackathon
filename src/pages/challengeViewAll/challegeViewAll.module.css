@@ -1,13 +1,14 @@
 .container {
     margin-top: 151px;
-    padding-top: 100px;
+    padding-top: 93px;
 }
 
 hr {
     width: 60px;    
     border-top: 3px solid black;
+    margin-bottom: 10px;
 }
 
-.subtitle{
+.subtitle {
     font-size: 36px;
 }

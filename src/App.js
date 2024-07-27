@@ -5,6 +5,8 @@ import ChallengeRegister from './pages/challengeRegister/challengeRegister';
 import ChallengeViewAll from './pages/challengeViewAll/challengeViewAll';
 import Main from './pages/main/main';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Announcement from './pages/announcement/announcement';
+import AnnouncementRegister from './pages/announceRegister/announcementRegister';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
 					
 					{/* 추가 */}
 					<Route path="/ChallengeView/*" element={<ChallengeViewAll />}/> 
+					<Route path="/Announcement" element={<Announcement />}/> 
+					<Route path="/AnnouncementRegister" element={<AnnouncementRegister />}/> 
 				</Routes>
 			</BrowserRouter>
 		</div>

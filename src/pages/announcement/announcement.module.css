@@ -1,0 +1,83 @@
+.container {
+    margin-top: 151px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container > p {
+    margin-top: 86px;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: 1203px;
+}
+
+.tableContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    max-width: 1203px; /* 테이블 최대 너비를 설정 */
+    border-collapse: collapse;
+}
+
+caption {
+    display: none; 
+}
+
+colgroup col {
+    width: auto;
+}
+
+.colNum {
+    width: 5%;
+}
+
+.colSubject {
+    width: 65%;
+}
+
+.colAcess {
+    width: 10%;
+}
+
+.colDate {
+    width: 20%;
+}
+
+thead {
+    background-color: #f9f9f9;
+}
+
+th {
+    border-top: 3px solid black;
+    border-bottom: 2px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody > tr:hover {
+    background-color: #ddd;
+}
+
+.tdSubject a {
+    text-decoration: none;
+    color: black;
+}
+
+.tdSubject a:hover {
+    text-decoration: underline;
+}

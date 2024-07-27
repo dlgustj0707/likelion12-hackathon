@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import logo from "../../assets/logo.png";
-import searchImg from "../../assets/search.png";
+import logo from "../assets/logo.png";
+import searchImg from "../assets/search.png";
 import styles from "./navBar.module.css";
 
 function NavBar() {
@@ -34,7 +34,7 @@ function NavBar() {
 
             </div>
         </div>
-       
+
     )
 }
 

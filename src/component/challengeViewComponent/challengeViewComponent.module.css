@@ -1,0 +1,38 @@
+.container {
+    width: 522px;
+    height: 171px;
+    box-shadow: 5px 5px 10px;
+    border-radius: 62.5px;
+    padding-left: 61px;
+    padding-top: 38px;
+}
+
+.container > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.titleContainer {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.peopleContainer {
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 14px;
+    color: #333333;
+    width: 98px;
+    height: 28px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer {
+    font-size: 20px;
+    width: 328px;
+    margin-top: 12px;
+}

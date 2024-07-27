@@ -1,5 +1,12 @@
 .container {
     height: 151px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000; /* 다른 요소들 위에 있도록 */
+    box-shadow: 0px 2px 5px gray;
 }
 
 .logo {
@@ -8,3 +15,73 @@
     left: 54px;
 }
 
+.innerContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; /* 메뉴와 오른쪽 요소 사이 공간을 최대화 */
+    padding-right: 50px;
+}
+
+.menuContainer {
+    display: flex;
+    gap: 20px;
+    margin-left: 250px;
+    flex-grow: 1; /* 메뉴가 공간을 차지하게 함 */
+}
+
+.innerContainer > div {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 30px;
+    gap: 72px; /* 로그인과 아이콘 사이의 간격 추가 */
+}
+
+.innerContainer > div > button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menuContainer li {
+    list-style-type: none;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 23px;
+    overflow: hidden;
+    height: 46px;
+    width: 304px;
+}
+
+.searchContainer input {
+    border: none;
+    padding: 0 20px;
+    font-size: 16px;
+    height: 100%;
+    flex: 1;
+    outline: none;
+}
+
+.searchContainer button {
+    background: none;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.searchContainer button img {
+    height: 20px;
+    width: 20px;
+}

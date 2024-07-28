@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Viewport height */
+    margin-top: 212px; /* 기존의 margin-top을 제거 */
+}
+
+.profileContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 1043px;
+}
+
+.profileImage {
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+
+.edit {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hiddenFileInput {
+    display: none;
+}
+
+.infoContainer {
+    margin-left: 40px;
+}
+
+.info {
+    font-size: 24px;
+}
+
+.email {
+    font-size: 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    width: 1043px;
+}
+.chalBtnContainer {
+    margin-top: 109px;
+}
+
+.chalBtnContainer > p {
+    font-size: 24px;
+    margin-bottom: 38px;
+}
+
+.chalBtnContainer > button {
+    font-size: 14px;
+    border: none;
+    padding: 10px;
+    background-color: white;
+}
+
+.challengesContainer {
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -15,6 +15,9 @@ function Signup() {
                             <button>인증하기</button>
                         </div>
                         <div>
+                            <input type="text" placeholder='인증 번호를 입력해 주세요.' />
+                        </div>
+                        <div>
                             <input type="password" placeholder='Password를 입력해 주세요.' />
                         </div>
                         <div>

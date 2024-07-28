@@ -16,7 +16,7 @@ function Login() {
                     <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder='Email (본인의 학교 이메일을 입력해 주세요.)'/><br />
                     <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder='Password'/>
                 </div>
-                <p className={styles.signupLink}>계정이 없다면? <a href="">회원가입</a></p>
+                <p className={styles.signupContainer}>계정이 없다면? <a href="" className={styles.signupLink}>회원가입</a></p>
                 <button>로그인</button>
             </div>
 

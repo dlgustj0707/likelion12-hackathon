@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: #999999;
-}
-
 .logo {
     position: absolute;
     top: 42px;
@@ -30,16 +25,21 @@ a {
     background-color: #fff;
 }
 
-.signupLink {
+.signupContainer {
     font-size: 20px;
     font-weight: 200;
     text-align: left; /* 텍스트를 왼쪽으로 정렬 */
     width: 585px; /* input 창과 동일한 너비로 설정 */
     margin-left: 50px;
+    margin-top: 20px;
 }
 
-.signupLink a {
+.signupLink {
     margin-left: 92px; /* 추가된 간격 */
+    font-weight: 200;
+    font-size: 20px;
+    text-decoration: none;
+    color: #999999;
 }
 
 .title {
@@ -63,7 +63,6 @@ a {
     border: 1px solid #000000;
     font-size: 20px;
     padding-left: 50px; /* 글씨 입력 시 50px 떨어지도록 설정 */
-    margin-bottom: 20px; /* input 창들 사이에 간격 추가 */
 }
 
 .loginContainer > button {
@@ -74,7 +73,7 @@ a {
     background-color: #000000;
     border: 1px solid #000000;
     font-size: 20px;
-    margin-top: 37px;
+    margin-top: 27px;
 }
 
 input::placeholder {

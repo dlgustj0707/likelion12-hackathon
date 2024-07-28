@@ -21,10 +21,7 @@
 }
 
 .challengeList {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(522px, 1fr)); /* 각 열의 최소 너비를 522px로 설정 */
-    grid-gap: 10px; /* 각 아이템 사이에 20px 간격을 추가 */
-    justify-items: center; /* 각 아이템을 중앙에 배치 */
-    width: 100%; /* 전체 너비를 사용 */
-    max-width: 1200px; /* 최대 너비를 설정하여 레이아웃을 제한 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

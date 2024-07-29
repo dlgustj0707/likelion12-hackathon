@@ -45,7 +45,7 @@ function Login() {
 
     return (
         <>
-            <a className={styles.logo} href=""><img src={logo} alt="" /></a>
+            <a className={styles.logo} href="/main"><img src={logo} alt="" /></a>
             <div className={styles.container}>
                 <div className={styles.loginContainer}>
                     <p className={styles.title}>로그인</p>

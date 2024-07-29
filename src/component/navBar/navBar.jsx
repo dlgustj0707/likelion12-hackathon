@@ -11,7 +11,7 @@ function NavBar() {
     }
     return (
         <div className={styles.container}>
-            <a className={styles.logo} href=""><img src={logo} alt="" /></a>
+            <a className={styles.logo} href="/main"><img src={logo} alt="" /></a>
             <div className={styles.innerContainer}>
                 <ul className={styles.menuContainer}>
                     <li><a href="">교내 첼린지</a></li>
@@ -24,7 +24,7 @@ function NavBar() {
                         <input type="text" value={search} onChange={onChange}/>
                         <button><img src={searchImg} alt="" /></button>
                     </div>
-                    <a href="">로그인</a>
+                    <a href="/login">로그인</a>
                     <button>
                         <svg width="40" height="28" viewBox="0 0 40 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 0V4H40V0H0ZM0 12V16H40V12H0ZM0 24V28H40V24H0Z" fill="#666666"/>

@@ -18,7 +18,7 @@ function AnnouncementRegister() {
     }
 
     const handleClickBtn = async(e) => {
-        e.prevantDefault();
+        e.preventDefault();
         try{
             const response = await fetch('/notices/create', {
                 method: 'POST',
@@ -39,6 +39,7 @@ function AnnouncementRegister() {
                 alert(data.message);
             }
         }catch(error){
+            alert(error);
             console.error(error);
         }
     }

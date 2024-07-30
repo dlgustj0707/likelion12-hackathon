@@ -95,7 +95,7 @@ function Signup() {
             const data = await response.json();
             if (response.status === 201){
                 alert(data.message);
-                    window.location.href = '/main';
+                window.location.href = '/main';
             } else {
                 alert(data.message);
             }

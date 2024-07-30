@@ -1,3 +1,16 @@
+/* announcement.module.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.logo {
+    position: absolute;
+    top: 42px;
+    left: 54px;
+}
+
 .container {
     margin-top: 151px;
     padding: 20px;
@@ -15,6 +28,25 @@
     width: 1203px;
 }
 
+.editContainer {
+    max-width: 1203px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.edit {
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+.edit:hover {
+    text-decoration: underline;
+}
+
 .tableContainer {
     width: 100%;
     display: flex;
@@ -23,7 +55,7 @@
 
 table {
     width: 100%;
-    max-width: 1203px; /* 테이블 최대 너비를 설정 */
+    max-width: 1203px;
     border-collapse: collapse;
 }
 
@@ -74,10 +106,34 @@ tbody > tr:hover {
 }
 
 .tdSubject a {
+    font-weight: 500;
     text-decoration: none;
     color: black;
 }
 
 .tdSubject a:hover {
     text-decoration: underline;
+}
+
+.pageNumbers {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pageButton {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.pageButton.active {
+    font-weight: bold;
+    background-color: #ddd;
+}
+
+.pageButton:hover {
+    background-color: #ccc;
 }

@@ -8,9 +8,9 @@ function Signup() {
     const [pwd, setPwd] = useState("");
     const [pwd2, setPwd2] = useState("");
     const [emailSent, setEmailSent] = useState(false);
-    const [emailError, setEmailError] = useState(false); // 이메일 인증 실패 메시지를 위한 상태 추가
+    const [emailError, setEmailError] = useState(false);
     const [certificationSuccess, setCertificationSuccess] = useState(false);
-    const [certificationError, setCertificationError] = useState(false); // 인증번호 확인 실패 메시지를 위한 상태 추가
+    const [certificationError, setCertificationError] = useState(false);
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);

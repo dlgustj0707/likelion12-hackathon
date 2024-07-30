@@ -23,7 +23,7 @@
     margin-bottom: 29px;
 }
 
-.contentContainer > div > input, select {
+.classification select, .title input, .intro input, .period input, .certification select {
     height: 50px;
     background-color: #EEECEC;
     border: 1px solid #EEECEC;
@@ -43,7 +43,7 @@
     width: 184px;
 }
 
-.title > input, .intro > input, .method > input{
+.title > input, .intro > input, .method > textarea{
     width: 890px;
 }
 
@@ -72,4 +72,16 @@
 .contentContainer > button svg {
     margin-left: 10px; 
     transform: translateY(2px);
+}
+
+.method textarea {
+    height: 165px;
+    background-color: #EEECEC;
+    border: 1px solid #EEECEC;
+    color: #666666;
+    padding: 10px;  
+    resize: none;
+}
+.method label {
+    vertical-align: top;
 }

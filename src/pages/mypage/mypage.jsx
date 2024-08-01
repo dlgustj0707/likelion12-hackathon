@@ -98,7 +98,6 @@ function Mypage() {
 
     return (
         <div className={styles.container}>
-            <NavBar />
             <div className={styles.profileContainer}>
                 <img src={imageSrc} alt="Profile" className={styles.profileImage} />
                 <button className={styles.edit} onClick={handleBtnClick}>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Assuming you are using react-router for navigation
+import { useNavigate } from 'react-router-dom';
 import styles from './login.module.css';
 import logo from '../../assets/logo.png';
 
-function Login() {
+function Login({ onLogin }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -34,6 +34,7 @@ function Login() {
 
             const data = await response.json();
             if (response.status === 200) {
+                onLogin();
                 navigate('/main'); // Navigate to the main page on success
             } else {
                 alert(data.message);

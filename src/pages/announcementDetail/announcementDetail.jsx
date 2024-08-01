@@ -82,7 +82,6 @@ function AnnouncementDetail() {
 
     return (
         <>
-            <NavBar />
             <div className={styles.container}>
                 <p className={styles.bigTitle}>공지사항</p>
                 <hr className={styles.topHr} />

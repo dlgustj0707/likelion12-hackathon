@@ -53,7 +53,6 @@ function Announcement() {
 
     return (
         <>
-            <NavBar />
             <div className={styles.container}>
                 <p>공지사항</p>
                 <div className={styles.editContainer}>

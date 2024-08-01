@@ -1,0 +1,75 @@
+.container {
+    margin-top: 151px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bigTitle {
+    margin-top: 86px;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: 1203px;
+}
+
+.topHr, .bottomHr {
+    max-width: 1203px;
+    width: 100%;
+}
+
+.topHr {
+    height: 2px;
+    background-color: black; /* color 대신 background-color를 사용해야 합니다 */
+    border: none; /* 기본 테두리를 제거합니다 */
+}
+
+.bottomHr {
+    height: 1px; /* 필요한 경우 두께 조절 */
+    background-color: black;
+    border: none;
+}
+
+.title {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.date {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #666666;
+    font-size: 16px;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 제목과 버튼 컨테이너가 같은 높이에 배치되도록 */
+    width: 100%;
+    max-width: 1203px;
+}
+
+.btnContainer {
+    display: flex;
+    gap: 10px; /* 버튼 사이의 간격을 원하는 만큼 조절합니다 */
+}
+
+.btnContainer > button {
+    border: none;
+    background-color: white;
+    color: #666666;
+}
+
+.dateContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1203px;
+}
+.content {
+    padding: 30px;
+}

@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Announcement from './pages/announcement/announcement';
 import AnnouncementRegister from './pages/announceRegister/announcementRegister';
 import Mypage from './pages/mypage/mypage';
+import AnnouncementDetail from './pages/announcementDetail/announcementDetail';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/ChallengeView/*" element={<ChallengeViewAll />}/> 
 					<Route path="/Announcement" element={<Announcement />}/> 
 					<Route path="/AnnouncementRegister" element={<AnnouncementRegister />}/> 
+					<Route path="/AnnouncementDetail" element={<AnnouncementDetail />}/> 
 					<Route path="/Mypage" element={<Mypage />}/> 
 				</Routes>
 			</BrowserRouter>

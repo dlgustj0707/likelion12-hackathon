@@ -8,7 +8,6 @@ function Announcement() {
     const noticesPerPage = 10;
 
     useEffect(() => {
-        // 공지사항을 불러오는 함수
         const fetchNotices = async () => {
             try {
                 const response = await fetch('/notices/list');
@@ -30,14 +29,12 @@ function Announcement() {
         fetchNotices();
     }, []);
 
-    // 현재 페이지에 해당하는 공지사항을 가져오는 함수
     const getCurrentNotices = () => {
         const indexOfLastNotice = currentPage * noticesPerPage;
         const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
         return notices.slice(indexOfFirstNotice, indexOfLastNotice);
     };
 
-    // 페이지네이션 버튼을 생성하는 함수
     const renderPageNumbers = () => {
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(notices.length / noticesPerPage); i++) {
@@ -59,8 +56,6 @@ function Announcement() {
             <NavBar />
             <div className={styles.container}>
                 <p>공지사항</p>
-
-                {/* 관리자만 보임 */}
                 <div className={styles.editContainer}>
                     <a className={styles.edit} href="/AnnouncementRegister">편집</a>
                 </div>
@@ -85,9 +80,9 @@ function Announcement() {
                         {getCurrentNotices().map((notice, index) => (
                             <tr key={notice.id}>
                                 <td className={styles.tdNum}>{notices.length - (currentPage - 1) * noticesPerPage - index}</td>
-                                <td className={styles.tdSubject}><a href="">{notice.title}</a></td>
-                                <td className={styles.tdAcess}>조회수</td>
-                                <td className={styles.tdDate}>날짜</td>
+                                <td className={styles.tdSubject}><a href={`/announcementDetail?noticeId=${notice.id}`}>{notice.title}</a></td>
+                                <td className={styles.tdAcess}>{notice.views}</td>
+                                <td className={styles.tdDate}>{notice.date}</td>
                             </tr>
                         ))}
                     </tbody>

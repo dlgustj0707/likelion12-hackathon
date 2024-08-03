@@ -16,7 +16,7 @@ function Mypage() {
         // 유저 정보를 가져오는 함수
         const fetchUserInfo = async () => {
             try {
-                const response = await fetch('/user/userInfo');
+                const response = await fetch('http://beancp.com:8082/user/userInfo');
                 const data = await response.json();
                 if (data.info) {
                     setName(data.info.name);
@@ -52,7 +52,7 @@ function Mypage() {
             reader.readAsDataURL(file);
 
             // 백엔드로 파일 업로드
-            fetch('/upload', {
+            fetch('http://beancp.com:8082/upload', {
                 method: 'POST',
                 body: formData,
             })
@@ -73,7 +73,7 @@ function Mypage() {
     const handleSchoolChallenge = async () => {
         try {
             setIsSchoolChal(true);
-            const response = await fetch('/user/inSchoolChal');
+            const response = await fetch('http://beancp.com:8082/user/inSchoolChal');
             const data = await response.json();
             if (data.challenge) {
                 setChallenges(data.challenge);
@@ -86,7 +86,7 @@ function Mypage() {
     const handleAllChallenge = async () => {
         try {
             setIsSchoolChal(false);
-            const response = await fetch('/user/inAllChal');
+            const response = await fetch('http://beancp.com:8082/user/inAllChal');
             const data = await response.json();
             if (data.challenge) {
                 setChallenges(data.challenge);

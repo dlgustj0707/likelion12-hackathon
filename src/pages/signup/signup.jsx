@@ -4,6 +4,8 @@ import logo from '../../assets/logo.png';
 
 function Signup() {
     const [email, setEmail] = useState("");
+    const [universityName, setUniversityName] = useState("");
+    const [name, setName] = useState("");
     const [certificationNum, setCertificationNum] = useState("");
     const [pwd, setPwd] = useState("");
     const [pwd2, setPwd2] = useState("");
@@ -12,18 +14,26 @@ function Signup() {
     const [certificationSuccess, setCertificationSuccess] = useState(false);
     const [certificationError, setCertificationError] = useState(false);
 
+    const handleChangeUniversity = (e) => {
+        setUniversityName(e.target.value);
+    }
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);
+    }
+    const handleChangeName = (e) => {
+        setName(e.target.value);
     }
 
     const handleClickEmailBtn = async (e) => {
         e.preventDefault();
+        
         try {
-            const response = await fetch(`/user/emailAuthReq?email=${email}`, {
-                method: 'GET'
+            const response = await fetch(`http://beancp.com:8082/user/emailAuthReq?email=${encodeURIComponent(email)}&universityName=${encodeURIComponent(universityName)}`, {
+                method: 'GET',
             });
             const data = await response.json();
             if (data.success) {
+                console.log(data);
                 setEmailSent(true);
                 setEmailError(false); 
             } else {
@@ -33,7 +43,7 @@ function Signup() {
         } catch (error) {
             setEmailSent(false);
             setEmailError(true); 
-            console.error(error);
+            console.error('Error:', error);
         }
     }
 
@@ -44,11 +54,11 @@ function Signup() {
     const handleClickCertiBtn = async (e) => {
         e.preventDefault();
         try {
-            // 이게 맞는지 모르겠음
-            const response = await fetch(`/user/emailAuthRes?certificationNum=${certificationNum}`, {
+            const response = await fetch(`http://beancp.com:8082/user/emailAuthRes?email=${encodeURIComponent(email)}&universityName=${encodeURIComponent(universityName)}&code=${encodeURIComponent(certificationNum)}`, {
                 method: 'GET'
             });
             const data = await response.json();
+            console.log(data);
             if (data.success) {
                 setCertificationSuccess(true);
                 setCertificationError(false); 
@@ -75,12 +85,14 @@ function Signup() {
         e.preventDefault();
         if (!certificationSuccess) {
             alert("이메일 인증을 완료해 주세요.");
+            return;
         }
         if (pwd !== pwd2){
             alert("Passwords do not match");
+            return;
         }
         try {
-            const response = await fetch('/user/signUp', {
+            const response = await fetch('http://beancp.com:8082/user/signUp', {
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -88,8 +100,8 @@ function Signup() {
                 body: JSON.stringify({
                     email: email,
                     password: pwd,
-                    // name: name,
-                    // school: school
+                    name: name,
+                    school: universityName,
                 })
             })
             const data = await response.json();
@@ -112,6 +124,20 @@ function Signup() {
                 <div>
                     <p>회원가입</p>
                     <div className={styles.signupFormContainer}>
+                        
+                        <div>
+                            <input 
+                                type="text" 
+                                value={universityName}
+                                onChange={handleChangeUniversity}
+                                placeholder='대학교를 입력해주세요' />
+                                <input 
+                                type="text" 
+                                value={name}
+                                onChange={handleChangeName}
+                                placeholder='이름을 입력해주세요' />
+                        </div>
+                        
                         <div>
                             <input 
                                 type="email" 
@@ -130,7 +156,7 @@ function Signup() {
                                 placeholder='인증 번호를 입력해 주세요.' />
                             <button onClick={handleClickCertiBtn}>
                                 <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.00002 11.2001L1.80002 7.0001L0.400024 8.4001L6.00002 14.0001L18 2.0001L16.6 0.600098L11.3 5.9001L6.00002 11.2001Z" fill="#666666"/>
+                                    <path d="M6.00002 11.2001L1.80002 7.0001L0.400024 8.4001L6.00002 14.0001L18 2.0001L16.6 0.600098L11.3 5.9001L6.00002 11.2001Z" fill="#666666"/>
                                 </svg>
                             </button>
                         </div>

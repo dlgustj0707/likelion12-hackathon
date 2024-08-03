@@ -24,7 +24,7 @@ function Login({ onLogin }) {
         };
 
         try {
-            const response = await fetch('/user/login', {
+            const response = await fetch('http://beancp.com:8082/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,7 +35,8 @@ function Login({ onLogin }) {
             const data = await response.json();
             if (response.status === 200) {
                 onLogin();
-                navigate('/main'); // Navigate to the main page on success
+                alert(data.message);
+                navigate('/'); // Navigate to the main page on success
             } else {
                 alert(data.message);
             }

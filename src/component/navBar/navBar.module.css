@@ -85,3 +85,9 @@ a {
     height: 20px;
     width: 20px;
 }
+
+.logoutBtn {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+}

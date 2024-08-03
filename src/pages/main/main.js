@@ -7,7 +7,6 @@ function Main() {
 
     return (
         <>
-            <NavBar/>
             <div className={styles.welcomeMessageContainer}>
                 <h3 className={styles.welcomeMessageTitle}>Welcome Message</h3>
                 <p className={styles.welcomeMessageDetail}>Molestiae natus quidem recusandae. Ut dolorem et omnis. Quasi placeat quae nostrum omnis illum. Eveniet quas esse voluptas accusantium provident. Beatae fugit sed quisquam minus sunt vitae id et. Quisquam qui totam eius et nemo libero omnis et at. 

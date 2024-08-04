@@ -1,0 +1,48 @@
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-items {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.slider-items img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 10px;
+}
+
+.prev-button,
+.next-button {
+    background-color: #ccc;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.prev-button {
+    position: absolute;
+    left: 10px;
+}
+
+.next-button {
+    position: absolute;
+    right: 10px;
+}

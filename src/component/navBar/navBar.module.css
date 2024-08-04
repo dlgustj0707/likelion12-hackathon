@@ -7,6 +7,12 @@
     background-color: white;
     z-index: 1000; /* 다른 요소들 위에 있도록 */
     box-shadow: 0px 2px 5px gray;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
 .logo {

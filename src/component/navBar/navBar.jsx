@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import logo from "../../assets/logo.png";
@@ -19,8 +19,38 @@ function NavBar() {
         navigate('/login');
     };
 
+    /* 헤더 숨기기 기능 구현 (시작) */
+    const [isHidden, setIsHidden] = useState(false);
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const delta = 5; 
+
+    const handleScroll = useCallback(() => {
+        const st = window.scrollY || document.documentElement.scrollTop;
+
+        if (Math.abs(lastScrollTop - st) <= delta) {
+        return;
+        }
+
+        if (st > lastScrollTop && st > 40) { // 헤더 높이 정도로 조정
+        setIsHidden(true);
+        } else {
+        setIsHidden(false);
+        }
+
+        setLastScrollTop(st);
+    }, [lastScrollTop]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]); 
+    /* 헤더 숨기기 기능 구현 (끝) */
+
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${isHidden ? styles.hidden : ''}`}>
             <a className={styles.logo} href="/"><img src={logo} alt="" /></a>
             <div className={styles.innerContainer}>
                 <ul className={styles.menuContainer}>

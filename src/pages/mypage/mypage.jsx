@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../../component/navBar/navBar';
+import axios from '../../axios'; // axios 인스턴스 가져오기
 import styles from './mypage.module.css';
 import defaultImg from '../../assets/Group.png';
 import ChallengeViewComponent2 from '../../component/challengeViewComponent/challengeViewComponent2';
@@ -16,8 +16,8 @@ function Mypage() {
         // 유저 정보를 가져오는 함수
         const fetchUserInfo = async () => {
             try {
-                const response = await fetch('http://beancp.com:8082/user/userInfo');
-                const data = await response.json();
+                const response = await axios.get('/user/userInfo');
+                const data = response.data;
                 if (data.info) {
                     setName(data.info.name);
                     setEmail(data.info.email);
@@ -38,7 +38,7 @@ function Mypage() {
         document.getElementById('fileInput').click();
     };
 
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             const formData = new FormData();
@@ -52,29 +52,24 @@ function Mypage() {
             reader.readAsDataURL(file);
 
             // 백엔드로 파일 업로드
-            fetch('http://beancp.com:8082/upload', {
-                method: 'POST',
-                body: formData,
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.message === 'image upload success') {
-                        console.log('Image uploaded successfully');
-                    } else {
-                        console.error('Image upload failed');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+            try {
+                const response = await axios.post('/upload', formData);
+                if (response.data.message === 'image upload success') {
+                    console.log('Image uploaded successfully');
+                } else {
+                    console.error('Image upload failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
     };
 
     const handleSchoolChallenge = async () => {
         try {
             setIsSchoolChal(true);
-            const response = await fetch('http://beancp.com:8082/user/inSchoolChal');
-            const data = await response.json();
+            const response = await axios.get('/user/inSchoolChal');
+            const data = response.data;
             if (data.challenge) {
                 setChallenges(data.challenge);
             }
@@ -86,8 +81,8 @@ function Mypage() {
     const handleAllChallenge = async () => {
         try {
             setIsSchoolChal(false);
-            const response = await fetch('http://beancp.com:8082/user/inAllChal');
-            const data = await response.json();
+            const response = await axios.get('/user/inAllChal');
+            const data = response.data;
             if (data.challenge) {
                 setChallenges(data.challenge);
             }

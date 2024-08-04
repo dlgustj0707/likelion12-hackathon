@@ -62,15 +62,11 @@ colgroup col {
 }
 
 .colNum {
-    width: 5%;
+    width: 10%;
 }
 
 .colSubject {
-    width: 65%;
-}
-
-.colAcess {
-    width: 10%;
+    width: 70%;
 }
 
 .colDate {

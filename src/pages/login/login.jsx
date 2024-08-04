@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // axios 가져오기
+import { AuthContext } from '../../context/AuthContext';
 import styles from './login.module.css';
 import logo from '../../assets/logo.png';
 
-function Login({ onLogin }) {
+function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleChangeEmail = (e) => {
@@ -24,21 +27,16 @@ function Login({ onLogin }) {
         };
 
         try {
-            const response = await fetch('http://beancp.com:8082/user/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(loginData)
-            });
+            const response = await axios.post('http://beancp.com:8082/user/login', loginData, { withCredentials: true });
 
-            const data = await response.json();
             if (response.status === 200) {
-                onLogin();
-                alert(data.message);
+                // 로그인 성공 시 로컬 스토리지에 토큰 저장
+                localStorage.setItem('authToken', response.data.token); 
+                login();
+                alert(response.data.message);
                 navigate('/'); // Navigate to the main page on success
             } else {
-                alert(data.message);
+                alert(response.data.message);
             }
         } catch (error) {
             alert(error.message);

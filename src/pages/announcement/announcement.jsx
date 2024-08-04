@@ -5,12 +5,33 @@ import styles from './announcement.module.css';
 function Announcement() {
     const [notices, setNotices] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isAdmin, setIsAdmin] = useState(false); // 관리자 여부 상태 추가
     const noticesPerPage = 10;
 
     useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await fetch('http://beancp.com:8082/user/userInfo', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user info');
+                }
+                const data = await response.json();
+                if (data.info.id === '1') {
+                    setIsAdmin(true); // 관리자인 경우
+                }
+            } catch (error) {
+                console.error('Failed to fetch user info:', error);
+            }
+        };
+
         const fetchNotices = async () => {
             try {
-                const response = await fetch('/notices/list');
+                const response = await fetch('http://beancp.com:8082/notices/list');
                 const data = await response.json();
                 if (data.notices) {
                     const sortedNotices = data.notices.sort((a, b) => {
@@ -26,6 +47,7 @@ function Announcement() {
             }
         };
 
+        fetchUserInfo();
         fetchNotices();
     }, []);
 
@@ -55,23 +77,23 @@ function Announcement() {
         <>
             <div className={styles.container}>
                 <p>공지사항</p>
-                <div className={styles.editContainer}>
-                    <a className={styles.edit} href="/AnnouncementRegister">편집</a>
-                </div>
+                {isAdmin && (
+                    <div className={styles.editContainer}>
+                        <a className={styles.edit} href="/AnnouncementRegister">편집</a>
+                    </div>
+                )}
                 
                 <table>
-                    <caption>번호,제목,조회수,날짜</caption>
+                    <caption>번호,제목,날짜</caption>
                     <colgroup>
                         <col className={styles.colNum}/>
                         <col className={styles.colSubject}/>
-                        <col className={styles.colAcess}/>
                         <col className={styles.colDate}/>
                     </colgroup>
                     <thead>
                         <tr>
                             <th className={styles.thNum}>번호</th>
                             <th className={styles.thSubject}>제목</th>
-                            <th className={styles.thAcess}>조회수</th>
                             <th className={styles.thDate}>날짜</th>
                         </tr>
                     </thead>
@@ -80,7 +102,6 @@ function Announcement() {
                             <tr key={notice.id}>
                                 <td className={styles.tdNum}>{notices.length - (currentPage - 1) * noticesPerPage - index}</td>
                                 <td className={styles.tdSubject}><a href={`/announcementDetail?noticeId=${notice.id}`}>{notice.title}</a></td>
-                                <td className={styles.tdAcess}>{notice.views}</td>
                                 <td className={styles.tdDate}>{notice.date}</td>
                             </tr>
                         ))}

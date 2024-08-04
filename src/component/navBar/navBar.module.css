@@ -91,3 +91,28 @@ a {
     font-size: 16px;
     font-weight: 600;
 }
+.menuBtn {
+    position: relative;
+}
+
+.menuBar {
+    list-style-type: none;
+    position: absolute;
+    top: 151px;
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 150px;
+    right: 0;
+}
+.menuBar > li {
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 24px;
+}
+
+
+
+.menuBar :last-child {
+    padding-bottom: 20px;
+}

@@ -20,8 +20,17 @@
     font-size: 36px;
 }
 
-.challengeList {
+.challengeListRow{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    flex: 1;
+}
+.challengeList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 69px;
+    transform: translateY(-101px);
 }

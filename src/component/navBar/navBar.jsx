@@ -1,3 +1,4 @@
+
 import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -48,6 +49,7 @@ function NavBar() {
         };
     }, [handleScroll]); 
     /* 헤더 숨기기 기능 구현 (끝) */
+
 
     return (
         <div className={`${styles.container} ${isHidden ? styles.hidden : ''}`}>

@@ -14,19 +14,24 @@ function Mypage() {
 
     useEffect(() => {
         // 유저 정보를 가져오는 함수
-        axios.get('http://beancp.com:8082/user/userInfo', {
-            withCredentials: true
-        }).then(response => {
-            const data = response.data;
-            setName(data.info[0].name);
-            setEmail(data.info[0].email);
-            setSchool(data.info[0].schoolName);
-            if (data.info.image_url) {
-                setImageSrc(data.info[0].image_url);
+        const fetchUserInfo = async () => {
+            try {
+                const response = await axios.get('http://beancp.com:8082/user/userInfo');
+                const data = response.data;
+                if (data.info) {
+                    setName(data.info.name);
+                    setEmail(data.info.email);
+                    setSchool(data.info.school);
+                    if (data.info.image_url) {
+                        setImageSrc(data.info.image_url);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to fetch user info:', error);
             }
-        }).catch(error => {
-            console.error('Failed to fetch user info:', error);
-        });
+        };
+
+        fetchUserInfo();
     }, []);
 
     const handleBtnClick = () => {
@@ -48,9 +53,7 @@ function Mypage() {
 
             // 백엔드로 파일 업로드
             try {
-                const response = await axios.post('http://beancp.com:8082/upload', formData, {
-                    withCredentials: true
-                });
+                const response = await axios.post('http://beancp.com:8082/upload', formData);
                 if (response.data.message === 'image upload success') {
                     console.log('Image uploaded successfully');
                 } else {
@@ -65,9 +68,7 @@ function Mypage() {
     const handleSchoolChallenge = async () => {
         try {
             setIsSchoolChal(true);
-            const response = await axios.get('http://beancp.com:8082/user/inSchoolChal', {
-                withCredentials: true
-            });
+            const response = await axios.get('http://beancp.com:8082/user/inSchoolChal');
             const data = response.data;
             if (data.challenge) {
                 setChallenges(data.challenge);
@@ -80,9 +81,7 @@ function Mypage() {
     const handleAllChallenge = async () => {
         try {
             setIsSchoolChal(false);
-            const response = await axios.get('http://beancp.com:8082/user/inAllChal', {
-                withCredentials: true
-            });
+            const response = await axios.get('http://beancp.com:8082/user/inAllChal');
             const data = response.data;
             if (data.challenge) {
                 setChallenges(data.challenge);
@@ -132,6 +131,7 @@ function Mypage() {
                     <p className={styles.info}>{school} 재학, {name} 님</p>
                     <p className={styles.email}>E-mail : {email}</p>
                 </div>
+                
             </div>
 
             <div className={styles.chalBtnContainer}>
@@ -160,6 +160,7 @@ function Mypage() {
                         content={challenge.discription}
                     />
                 ))}
+                
             </div>
         </div>
     );

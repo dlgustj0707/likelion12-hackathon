@@ -12,6 +12,7 @@ import Mypage from './pages/mypage/mypage';
 import AnnouncementDetail from './pages/announcementDetail/announcementDetail';
 import { AuthProvider } from './context/AuthContext';
 import NavBar from './component/navBar/navBar';
+import AllChallengeViewAll from './pages/allChallengeViewAll/allChallengeViewAll';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/challenge" element={<ChallengeRegister />} />
                         <Route path="/challengeView" element={<ChallengeViewAll />} />
+                        <Route path="/allChallengeView" element={<AllChallengeViewAll />} />
                         <Route path="/challengeDetail" element={<ChallengeDetail />} />
                         <Route path="/announcement" element={<Announcement />} />
                         <Route path="/announcementRegister" element={<AnnouncementRegister />} />

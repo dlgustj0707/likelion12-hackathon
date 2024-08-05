@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../component/navBar/navBar';
-import styles from './challegeViewAll.module.css';
+import styles from './allChallegeViewAll.module.css';
 import ChallengeViewComponent from '../../component/challengeViewComponent/challengeViewComponent';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ function ChallengeViewAll() {
             <div className={styles.container}>
                 <div className={styles.titleContainer}>
                     <hr className={styles.topTitle}/>
-                    <p className={styles.subtitle}>교내 첼린지<br />전체 보기</p>
+                    <p className={styles.subtitle}>전체 첼린지<br />전체 보기</p>
                     <button onClick={handleClickBtn}>챌린지 만들기</button>
                 </div>
 

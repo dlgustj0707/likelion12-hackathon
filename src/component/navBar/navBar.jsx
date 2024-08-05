@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -15,8 +14,8 @@ function NavBar() {
         setMenu(isOpen => !isOpen); // on,off 개념 boolean
     }
 
-    const handleLogout = () => {
-        logout();
+    const handleLogout = async () => {
+        await logout();
         navigate('/login');
     };
 
@@ -29,13 +28,13 @@ function NavBar() {
         const st = window.scrollY || document.documentElement.scrollTop;
 
         if (Math.abs(lastScrollTop - st) <= delta) {
-        return;
+            return;
         }
 
         if (st > lastScrollTop && st > 40) { // 헤더 높이 정도로 조정
-        setIsHidden(true);
+            setIsHidden(true);
         } else {
-        setIsHidden(false);
+            setIsHidden(false);
         }
 
         setLastScrollTop(st);
@@ -45,11 +44,10 @@ function NavBar() {
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-        window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, [handleScroll]); 
     /* 헤더 숨기기 기능 구현 (끝) */
-
 
     return (
         <div className={`${styles.container} ${isHidden ? styles.hidden : ''}`}>
@@ -58,7 +56,7 @@ function NavBar() {
                 <ul className={styles.menuContainer}>
                     <li><a href="/challengeView">교내 챌린지</a></li>
                     <li><a href="">이달의 대항전 기록</a></li>
-                    <li><a href="">전체 챌린지</a></li>
+                    <li><a href="/allChallengeView">전체 챌린지</a></li>
                     <li><a href="/announcement">공지사항</a></li>
                 </ul>
                 <div>
@@ -79,8 +77,8 @@ function NavBar() {
                     {isOpen ? (
                         <ul className={styles.menuBar}>
                             <li><a href="/mypage">마이 페이지</a></li>
-                            <li><a href="">교내 챌린지</a></li>
-                            <li><a href="">전체 챌린지</a></li>
+                            <li><a href="/challengeView">교내 챌린지</a></li>
+                            <li><a href="/allChallengeView">전체 챌린지</a></li>
                             <li><a href="">이달의 대항전</a></li>
                             <li><a href="/announcement">공지사항</a></li>
                         </ul>

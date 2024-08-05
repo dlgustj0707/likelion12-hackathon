@@ -21,7 +21,7 @@ function Announcement() {
                     throw new Error('Failed to fetch user info');
                 }
                 const data = await response.json();
-                if (data.info.id === '1') {
+                if (data.info.id === '12') {
                     setIsAdmin(true); // 관리자인 경우
                 }
             } catch (error) {

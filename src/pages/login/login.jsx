@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // axios 가져오기
+import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import styles from './login.module.css';
 import logo from '../../assets/logo.png';
@@ -30,8 +30,6 @@ function Login() {
             const response = await axios.post('http://beancp.com:8082/user/login', loginData, { withCredentials: true });
 
             if (response.status === 200) {
-                // 로그인 성공 시 로컬 스토리지에 토큰 저장
-                localStorage.setItem('authToken', response.data.token); 
                 login();
                 alert(response.data.message);
                 navigate('/'); // Navigate to the main page on success
@@ -45,7 +43,7 @@ function Login() {
 
     return (
         <>
-            <a className={styles.logo} href="/main"><img src={logo} alt="" /></a>
+            <a className={styles.logo} href="/"><img src={logo} alt="" /></a>
             <div className={styles.container}>
                 <div className={styles.loginContainer}>
                     <p className={styles.title}>로그인</p>

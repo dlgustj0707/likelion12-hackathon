@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NavBar from '../../component/navBar/navBar';
 import styles from './announcementRegister.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 function AnnouncementRegister() {
     const location = useLocation();
@@ -22,44 +23,38 @@ function AnnouncementRegister() {
         setIsRequired(e.target.value === "필독");
     };
 
-    const formatDate = (date) => {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}.${month}.${day}`;
-    };
+    // const formatDate = (date) => {
+    //     const year = date.getFullYear();
+    //     const month = String(date.getMonth() + 1).padStart(2, '0');
+    //     const day = String(date.getDate()).padStart(2, '0');
+    //     return `${year}.${month}.${day}`;
+    // };
 
     const handleClickBtn = async (e) => {
         e.preventDefault();
 
-        const currentDate = new Date();
-        const formattedDate = formatDate(currentDate);
-
         const requestBody = {
-            notices: [
-                {
-                    title: title,
-                    date: formattedDate,
-                    content: content,
-                    important: isRequired
-                }
-            ]
+            title: title,
+            content: content,
+            important: isRequired
         };
 
         try {
-            const response = await fetch(noticeId ? '/notices/update' : '/notices/create', {
+            const response = await axios({
                 method: noticeId ? 'PUT' : 'POST',
+                url: noticeId ? 'http://beancp.com:8082/notices/update' : 'http://beancp.com:8082/notices/create',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(requestBody)
+                data: JSON.stringify(requestBody),
+                withCredentials: true,
             });
-            const data = await response.json();
-            if (response.ok) {
+
+            if (response.status === 200) {
                 alert(noticeId ? '공지사항이 수정되었습니다.' : '공지사항이 등록되었습니다.');
                 navigate('/announcement');
             } else {
-                alert(data.message);
+                alert(response.data.message);
             }
         } catch (error) {
             alert('공지사항 업로드에 실패했습니다.');
@@ -101,7 +96,6 @@ function AnnouncementRegister() {
                             value={isRequired ? "필독" : "일반"}
                             onChange={handleChangeIsRequired}
                         >
-                            <option value="">선택</option>
                             <option value="필독">필독</option>
                             <option value="일반">일반</option>
                         </select>

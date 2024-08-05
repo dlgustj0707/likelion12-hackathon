@@ -16,8 +16,8 @@ function Announcement() {
                     withCredentials: true
                 });
                 const data = response.data;
-                if (data.info[0].id === '12') {
-                    console.log(data.info[0].id);
+                
+                if (data.info[0].id === 12) {
                     setIsAdmin(true); // 관리자인 경우
                 }
             } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../component/navBar/navBar';
 import styles from './announcement.module.css';
+import axios from 'axios';
 
 function Announcement() {
     const [notices, setNotices] = useState([]);
@@ -11,17 +12,12 @@ function Announcement() {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await fetch('http://beancp.com:8082/user/userInfo', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
+                const response = await axios.get('http://beancp.com:8082/user/userInfo', {
+                    withCredentials: true
                 });
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user info');
-                }
-                const data = await response.json();
-                if (data.info.id === '12') {
+                const data = response.data;
+                if (data.info[0].id === '12') {
+                    console.log(data.info[0].id);
                     setIsAdmin(true); // 관리자인 경우
                 }
             } catch (error) {
@@ -31,8 +27,8 @@ function Announcement() {
 
         const fetchNotices = async () => {
             try {
-                const response = await fetch('http://beancp.com:8082/notices/list');
-                const data = await response.json();
+                const response = await axios.get('http://beancp.com:8082/notices/list');
+                const data = response.data;
                 if (data.notices) {
                     const sortedNotices = data.notices.sort((a, b) => {
                         if (a.important === b.important) {

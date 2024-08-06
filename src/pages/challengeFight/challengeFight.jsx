@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import NavBar from '../../component/navBar/navBar';
 import styles from './challengeFight.module.css';
 
 function ChallengeFight() {
+    const [monthlyChallenge, setMonthlyChallenge] = useState(null);
+    const [history, setHistory] = useState([]);
+    const [rank, setRank] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://beancp.com:8082/chal/monthly')
+            .then(response => {
+                if (response.status === 200) {
+                    setMonthlyChallenge(response.data.monthlyChallenge);
+                } else if (response.status === 204) {
+                    setError(response.data.message);
+                }
+            })
+            .catch(error => {
+                setError('이달의 챌린지 정보를 불러오는데 실패했습니다.');
+            });
+
+        axios.get('http://beancp.com:8082/chal/monthly/history')
+            .then(response => {
+                setHistory(response.data.history);
+                console.log(response.data.history);
+            })
+            .catch(error => {
+                setError('대항전 역사 정보를 불러오는데 실패했습니다.');
+            });
+
+        axios.get('http://beancp.com:8082/chal/monthly/totalRank')
+            .then(response => {
+                if (response.status === 200) {
+                    setRank(response.data.rank.slice(0, 5)); // 상위 5위까지만 설정
+                }
+            })
+            .catch(error => {
+                setError('대항전 총 순위 정보를 불러오는데 실패했습니다.');
+            });
+    }, []);
+
     return (
         <>
             <NavBar />
@@ -11,71 +50,47 @@ function ChallengeFight() {
                 <div className={styles.wrapFlex}>
                     <div className={styles.innerFlexLeft}>
                         <div className={styles.flexItem}>
-                        
                             <h2>이달의 대항전</h2>
                             <div className={styles.divider}/>
-                            <h3>하루에 한 문장 긍정적인 말하기</h3>
-                            <p>현재 250명 참여 중</p>
-                            <div className={styles.goNowButton}>
-                                참여하기 &gt;
-                            </div>
+                            {monthlyChallenge ? (
+                                <>
+                                    <h3>{monthlyChallenge.title}</h3>
+                                    <p>현재 {monthlyChallenge.participants}명 참여 중</p>
+                                    <div className={styles.goNowButton}>
+                                        참여하기 &gt;
+                                    </div>
+                                </>
+                            ) : (
+                                <p>{error ? error : '이달의 챌린지 정보가 없습니다.'}</p>
+                            )}
                         </div>
                         <div className={styles.flexItem}>
                             <h2>대항전 역사</h2>
                             <div className={styles.divider}/>
-                            <p>하루에 한 번 다른 사람 칭찬하기</p>
-                            <p>스터디 카페에서 3시간 공부하기</p>
-                            <p>하루에 한 끼 샐러드 먹기</p>
-                            <p>하루에 한 장 영어 필사 하기</p>
-                            <p>물 2L 마시기</p>
-                            <p>8시간 숙면하기</p>
+                            {history.length > 0 ? (
+                                history.map((item, index) => (
+                                    <p key={index}>{item.title}</p>
+                                ))
+                            ) : (
+                                <p>대항전 역사 정보가 없습니다.</p>
+                            )}
                         </div>
                     </div>
                     <div className={styles.innerFlexRight}>
-                        <div className={styles.challengeLogItem}>
-                            <div className={styles.challengeLogImg} style={{
-                                backgroundColor: 'black',
-                            }}/>
-                            <div className={styles.challengeLogDetail}>
-                                <h4>1. 인천대 </h4>
-                            </div>
-                        </div>
-
-                        <div className={styles.challengeLogItem}>
-                            <div className={styles.challengeLogImg} style={{
-                                backgroundColor: 'black',
-                            }}/>
-                            <div className={styles.challengeLogDetail}>
-                                <h4>2. 인하대 </h4>
-                            </div>
-                        </div>
-
-                        <div className={styles.challengeLogItem}>
-                            <div className={styles.challengeLogImg} style={{
-                                backgroundColor: 'black',
-                            }}/>
-                            <div className={styles.challengeLogDetail}>
-                                <h4>3. 연세대 </h4>
-                            </div>
-                        </div>
-
-                        <div className={styles.challengeLogItem}>
-                            <div className={styles.challengeLogImg} style={{
-                                backgroundColor: 'black',
-                            }}/>
-                            <div className={styles.challengeLogDetail}>
-                                <h4>4. 서울대  </h4>
-                            </div>
-                        </div>
-
-                        <div className={styles.challengeLogItem}>
-                            <div className={styles.challengeLogImg} style={{
-                                backgroundColor: 'black',
-                            }}/>
-                            <div className={styles.challengeLogDetail}>
-                                <h4>5. 고려대 </h4>
-                            </div>
-                        </div>
+                        {rank.length > 0 ? (
+                            rank.map((item, index) => (
+                                <div className={styles.challengeLogItem} key={index}>
+                                    <div className={styles.challengeLogImg} style={{
+                                        backgroundColor: 'black',
+                                    }}/>
+                                    <div className={styles.challengeLogDetail}>
+                                        <h4>{index + 1}. {item.schoolName}</h4>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>대항전 총 순위 정보가 없습니다.</p>
+                        )}
                     </div>
                 </div>
             </div>

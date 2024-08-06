@@ -50,13 +50,14 @@ function AnnouncementDetail() {
     const handleEditClick = () => {
         navigate('/announcementRegister', {
             state: {
-                noticeId,
+                noticeId: noticeId,
                 initialTitle: title,
                 initialContent: content,
                 initialIsRequired: isRequired,
                 initialDate: date
             }
         });
+        console.log(noticeId,title,content,isRequired,date);
     };
 
     const handleDeleteClick = async () => {

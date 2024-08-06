@@ -21,8 +21,8 @@ function Mypage() {
             setName(data.info[0].name);
             setEmail(data.info[0].email);
             setSchool(data.info[0].schoolName);
-            if (data.info.image_url) {
-                setImageSrc(data.info[0].image_url);
+            if (data.info[0].imageUrl) {
+                setImageSrc(data.info[0].imageUrl);
             }
         }).catch(error => {
             console.error('Failed to fetch user info:', error);
@@ -36,26 +36,24 @@ function Mypage() {
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            const formData = new FormData();
-            formData.append('imageFile', file);
+            let formData = new FormData();
+            formData.append('file', file);
+            //console.log(formData)
 
+            /*
             // 이미지 미리보기
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImageSrc(reader.result);
             };
-            reader.readAsDataURL(file);
-
+            reader.readAsDataURL(file); 
+            */
             // 백엔드로 파일 업로드
             try {
                 const response = await axios.post('http://beancp.com:8082/upload', formData, {
                     withCredentials: true
                 });
-                if (response.data.message === 'image upload success') {
-                    console.log('Image uploaded successfully');
-                } else {
-                    console.error('Image upload failed');
-                }
+                console.log(response);
             } catch (error) {
                 console.error('Error:', error);
             }

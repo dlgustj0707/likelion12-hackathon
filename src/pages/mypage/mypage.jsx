@@ -11,6 +11,7 @@ function Mypage() {
     const [email, setEmail] = useState('');
     const [school, setSchool] = useState('');
     const [challenges, setChallenges] = useState([]);
+    const [challenges2, setChallenges2] = useState([]);
 
     useEffect(() => {
         // 유저 정보를 가져오는 함수
@@ -27,6 +28,19 @@ function Mypage() {
         }).catch(error => {
             console.error('Failed to fetch user info:', error);
         });
+        try {
+            setChallenges([]);
+            setIsSchoolChal(true);
+            const response = axios.get('http://beancp.com:8082/user/inSchoolChal', {
+                withCredentials: true
+            });
+            const data = response.data;
+            if (data.challenge) {
+                setChallenges(data.challenge);
+            }
+        } catch (error) {
+            console.error('Failed to fetch school challenges:', error);
+        }
     }, []);
 
     const handleBtnClick = () => {
@@ -62,6 +76,7 @@ function Mypage() {
 
     const handleSchoolChallenge = async () => {
         try {
+            setChallenges([]);
             setIsSchoolChal(true);
             const response = await axios.get('http://beancp.com:8082/user/inSchoolChal', {
                 withCredentials: true
@@ -77,6 +92,7 @@ function Mypage() {
 
     const handleAllChallenge = async () => {
         try {
+            setChallenges([]);
             setIsSchoolChal(false);
             const response = await axios.get('http://beancp.com:8082/user/inAllChal', {
                 withCredentials: true

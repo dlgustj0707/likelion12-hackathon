@@ -49,7 +49,9 @@ function ChallengeViewAll() {
                     key={index} 
                     title={challenge.title} 
                     people={challenge.participants}
-                    content={(challenge.description.length>32)?challenge.description.substring(0, 32)+'...':challenge.description}/>
+                    content={(challenge.description.length>32)?challenge.description.substring(0, 32)+'...':challenge.description}
+                    id={challenge.id}
+                    />
             ));
         }
 
@@ -60,6 +62,7 @@ function ChallengeViewAll() {
                 title="" 
                 people="" 
                 content=""
+                id=""
               />
             );
         }

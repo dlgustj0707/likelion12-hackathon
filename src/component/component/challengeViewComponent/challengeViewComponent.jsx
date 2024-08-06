@@ -11,13 +11,12 @@ function ChallengeViewComponent(props) {
     const navigate = useNavigate()
 
     const goToDetail=()=>{
-        console.log(id);
         navigate('/challengeDetail', { state: { id: id } });
     }
 
     return (
         <>
-            <div className={styles.container} onClick={()=>{goToDetail()}}>
+            <div className={styles.container} onclick={()=>{goToDetail()}}>
                 <div>
                     <p className={styles.titleContainer}>{title}</p>
                     {title?<div className={styles.peopleContainer}>{people}명 참여 중</div>:<></>}

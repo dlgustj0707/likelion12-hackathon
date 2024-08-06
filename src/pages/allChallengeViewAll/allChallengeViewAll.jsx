@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../../component/navBar/navBar';
 import styles from './allChallegeViewAll.module.css';
 import ChallengeViewComponent from '../../component/challengeViewComponent/challengeViewComponent';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function ChallengeViewAll() {
     const navigate = useNavigate();
@@ -11,56 +12,80 @@ function ChallengeViewAll() {
         navigate("/challenge");
 
     }
+    const [challenges, setChallenges] = useState([]);
+    const [nowStartNum, setNowStartNum] = useState(0);
+
+    useEffect(() => {
+        axios.get('http://beancp.com:8082/main/allChal',{ withCredentials: true })
+            .then(response => {
+                if (response.data && response.data.results) {
+                    setChallenges(response.data.results);
+                }
+            })
+            .catch(error => {
+                console.error("aa", error);
+            });
+    }, []);
+
+    const snChange = (cn) =>{
+        const nextSn = nowStartNum+cn;
+        if( nextSn >= 0 && nextSn < challenges.length){
+            setNowStartNum(nextSn);
+        }
+    }
+    const getChalComp = (sn,num) =>{
+        let en = sn+num;
+        let boogie;
+        if(challenges.length< en){
+            boogie = (challenges.length < sn) ? num : sn+num-challenges.length;
+            en = challenges.length;
+        }
+        let chalComps = [];
+        if( en >= sn){
+            chalComps = challenges.slice(sn,en).map((challenge, index) => (
+                <ChallengeViewComponent 
+                    key={index} 
+                    title={challenge.title} 
+                    people={challenge.participants}
+                    content={(challenge.description.length>32)?challenge.description.substring(0, 32)+'...':challenge.description}/>
+            ));
+        }
+
+        for (let i = 0; i < boogie; i++) {
+            chalComps.push(
+              <ChallengeViewComponent 
+                key={chalComps.length + i} 
+                title="" 
+                people="" 
+                content=""
+              />
+            );
+        }
+        return chalComps;
+    }
+    
+    
     return (
         <>
             <NavBar />
             <div className={styles.container}>
                 <div className={styles.titleContainer}>
                     <hr className={styles.topTitle}/>
-                    <p className={styles.subtitle}>전체 첼린지<br />전체 보기</p>
+                    <p className={styles.subtitle}><span style={{color:"rgb(50,50,155)"}}>전체</span> 첼린지<br />전체 보기</p>
+                    
+                    <div className={styles.buttons}>
+                        <div className={styles.beforeBtn} onClick={()=>{snChange(-7)}} >&#10094;</div>
+                        <div className={styles.afterBtn} onClick={()=>{snChange(7)}}>&#10095;</div>
+                    </div>
                     <button onClick={handleClickBtn}>챌린지 만들기</button>
                 </div>
 
                 <div className={styles.challengeList}>
                     <div className={styles.challengeListRow}>
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
+                        {getChalComp(nowStartNum,3)}
                     </div>
                     <div className={styles.challengeListRow}>
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        <ChallengeViewComponent
-                            title="샐러디 주 5일 참석"
-                            people="53"
-                            content="여름을 다가오며 다이어트를 결심한 당신! 어쩌구저쩌구~"
-                        />
-                        
+                        {getChalComp(nowStartNum+4,4)}
                     </div>
                 </div>
             </div>

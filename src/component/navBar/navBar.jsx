@@ -55,7 +55,7 @@ function NavBar() {
             <div className={styles.innerContainer}>
                 <ul className={styles.menuContainer}>
                     <li><a href="/challengeView">교내 챌린지</a></li>
-                    <li><a href="">이달의 대항전 기록</a></li>
+                    <li><a href="/challengeFight">이달의 대항전 기록</a></li>
                     <li><a href="/allChallengeView">전체 챌린지</a></li>
                     <li><a href="/announcement">공지사항</a></li>
                 </ul>
@@ -79,7 +79,7 @@ function NavBar() {
                             <li><a href="/mypage">마이 페이지</a></li>
                             <li><a href="/challengeView">교내 챌린지</a></li>
                             <li><a href="/allChallengeView">전체 챌린지</a></li>
-                            <li><a href="">이달의 대항전</a></li>
+                            <li><a href="/challengeFight">이달의 대항전</a></li>
                             <li><a href="/announcement">공지사항</a></li>
                         </ul>
                     ) : (null)

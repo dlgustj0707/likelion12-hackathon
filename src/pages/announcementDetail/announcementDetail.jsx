@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './announcementDetail.module.css';
+import axios from 'axios';
 import NavBar from '../../component/navBar/navBar';
 
 function useQuery() {
@@ -20,19 +21,19 @@ function AnnouncementDetail() {
     useEffect(() => {
         const fetchNotice = async () => {
             try {
-                const url = `/notices/info?noticeId=${noticeId}`;
-                const response = await fetch(url, {
-                    method: 'GET',
+                const url = `http://beancp.com:8082/notices/info?noticeId=${noticeId}`;
+                const response = await axios.get(url, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                if (response.ok) {
-                    const data = await response.json();
-                    setTitle(data.title);
-                    setDate(data.date); 
-                    setContent(data.content);
-                    setIsRequired(data.important);
+                if (response.status === 200) {
+                    const data = response.data;
+                    console.log(data);
+                    setTitle(data.notices[0].title);
+                    setDate(data.notices[0].modifiedAt); 
+                    setContent(data.notices[0].content);
+                    setIsRequired(data.notices[0].important);
                 } else {
                     console.error('Error fetching notice:', response.statusText);
                 }
@@ -60,18 +61,17 @@ function AnnouncementDetail() {
 
     const handleDeleteClick = async () => {
         try {
-            const url = `/notices/delete?noticeId=${noticeId}`;
-            const response = await fetch(url, {
-                method: 'DELETE',
+            const url = `http://beancp.com:8082/notices/delete?noticeId=${noticeId}`;
+            const response = await axios.delete(url, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            if (response.ok) {
+            if (response.status === 200) {
                 alert('공지사항이 삭제되었습니다.');
                 navigate('/announcement');
             } else {
-                const data = await response.json();
+                const data = response.data;
                 alert(data.message);
             }
         } catch (error) {

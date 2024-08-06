@@ -16,8 +16,9 @@ function Announcement() {
                     withCredentials: true
                 });
                 const data = response.data;
+                console.log(data);
                 
-                if (data.info[0].id === 12) {
+                if (data.info[0].id === 16) {
                     setIsAdmin(true); // 관리자인 경우
                 }
             } catch (error) {
@@ -29,6 +30,7 @@ function Announcement() {
             try {
                 const response = await axios.get('http://beancp.com:8082/notices/list');
                 const data = response.data;
+                console.log(data.notices);
                 if (data.notices) {
                     const sortedNotices = data.notices.sort((a, b) => {
                         if (a.important === b.important) {
@@ -69,6 +71,7 @@ function Announcement() {
         return pageNumbers;
     };
 
+    
     return (
         <>
             <div className={styles.container}>
@@ -95,13 +98,14 @@ function Announcement() {
                     </thead>
                     <tbody>
                         {getCurrentNotices().map((notice, index) => (
-                            <tr key={notice.id}>
+                            <tr key={notice.noticeiId}>
                                 <td className={styles.tdNum}>{notices.length - (currentPage - 1) * noticesPerPage - index}</td>
-                                <td className={styles.tdSubject}><a href={`/announcementDetail?noticeId=${notice.id}`}>{notice.title}</a></td>
-                                <td className={styles.tdDate}>{notice.date}</td>
+                                <td className={styles.tdSubject}><a href={`/announcementDetail?noticeId=${notice.noticeId}`}>{notice.title}</a></td>
+                                <td className={styles.tdDate}>{notice.modifiedAt}</td>
                             </tr>
                         ))}
                     </tbody>
+                    
                 </table>
                 <div className={styles.pageNumbers}>
                     {renderPageNumbers()}
